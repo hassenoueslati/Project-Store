@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se Connecter {% endblock %}
+
+
+{% block body %}
+    <body style=" margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: url('https://cdn.wallpapersafari.com/45/64/10YyCw.jpg') no-repeat center fixed;
+
+  ">
+
+        <form class="box" method="post" style="width: 300px; padding: 40px; position: absolute; top: 50%;left: 50%; transform: translate(-50%,-50%);
+            background: #191919;
+              text-align: center;">
+            {% if error %}
+                <div class="alert alert-danger" style="color: red">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <h1 class="h3 mb-3 font-weight-normal" style="color: white;
+  text-transform: uppercase;
+  font-weight: 500;">Authentification</h1>
+
+            <input type="text" value="{{ last_username }}" name="username" placeholder="Nom d'utilisateur" id="inputUsername" class="form-control" autocomplete="username" required autofocus
+            style="border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;">
+
+
+
+            <input type="password" name="password" placeholder="Mot de passe" id="inputPassword" class="form-control" autocomplete="current-password" required
+                   style=" border:0;
+                   background: none;
+                   display: block;
+                   margin: 20px auto;
+                   text-align: center;
+                   border: 2px solid #3498db;
+                   padding: 14px 10px;
+                   width: 200px;
+                   outline: none;
+                   color: white;
+                   border-radius: 24px;
+                   transition: 0.25s;">
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+            #}
+
+            <button class="btn btn-lg btn-primary" type="submit" style="border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;">
+                Se connecter
+            </button>
+        </form>
+</body>
+
+{% endblock %}

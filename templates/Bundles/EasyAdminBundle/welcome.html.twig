@@ -1,0 +1,26 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title%}
+<div class="container"   >
+    <h1 style="color: red ; text-align: center"> Welcome to the administrator area</h1>
+</div>
+    <br>
+{% endblock %}
+{% block main %}
+   <div class="container">
+       <div class="row">
+           <div class="col-6 alert-info">
+
+               <span class="display-3"> {{ countAllProject['value']  }}  </span> Project
+           </div>
+           <div class="col-6 alert-success">
+               <span class="display-3"> {{ countAllCategory['value'] }} </span> Category
+           </div>
+
+       </div>
+
+
+   </div>
+
+{% endblock %}
